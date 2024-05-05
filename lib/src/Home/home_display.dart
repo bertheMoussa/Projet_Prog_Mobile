@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:projet_dev_mobile/src/Question/Question_Model.dart';
 
 class HomeDisplay extends StatelessWidget {
-  const HomeDisplay({Key? key}) : super(key: key);
+  const HomeDisplay({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class HomeDisplay extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color(0xFF123456), // Change the background color of the screen as desired
+        color: const Color(0xFF123456), // Change the background color of the screen as desired
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +31,7 @@ class HomeDisplay extends StatelessWidget {
             ElevatedButton(
               onPressed: () => context.go('/pacMan'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF6FCF97), // Change the background color as desired
+                backgroundColor: const Color(0xFF6FCF97), // Change the background color as desired
                 padding: const EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30), // Adjust the border radius as needed
@@ -47,7 +46,7 @@ class HomeDisplay extends StatelessWidget {
             ElevatedButton(
               onPressed: () => context.go('/collect'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF63A4FF), // Change the background color as desired
+                backgroundColor: const Color(0xFF63A4FF), // Change the background color as desired
                 padding: const EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30), // Adjust the border radius as needed
@@ -62,7 +61,7 @@ class HomeDisplay extends StatelessWidget {
             ElevatedButton(
               onPressed: () => context.go('/bubble'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFFFB946), // Change the background color as desired
+                backgroundColor: const Color(0xFFFFB946), // Change the background color as desired
                 padding: const EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30), // Adjust the border radius as needed

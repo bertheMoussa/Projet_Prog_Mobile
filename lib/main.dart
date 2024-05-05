@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:flutter/material.dart';
-import 'package:projet_dev_mobile/src/Home/Morpion.dart';
-import 'package:projet_dev_mobile/src/Home/home_display.dart';
 import 'package:projet_dev_mobile/src/Question/Question_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple.shade900),
-      ),home:HomeScreen(),
+      ),home:const HomeScreen(),
       );
       
   }

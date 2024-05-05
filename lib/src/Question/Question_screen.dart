@@ -8,7 +8,7 @@ import 'package:projet_dev_mobile/src/Question/result_box.dart';
 import 'package:projet_dev_mobile/src/constant.dart';
 import 'dart:math'; // Importez la classe Random
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -18,13 +18,27 @@ class _HomeScreenState extends State<HomeScreen> {
   
   int index = 0;
   int score = 0;
+  int iter=0;
   bool isPressed = false;
   bool isAlreadySelected = false;
 
   
+List<Question> _getRandomQuestions(List<Question> allQuestions, int count) {
+    List<Question> randomQuestions = [];
+    List<int> indexes = [];
+
+    while (randomQuestions.length < count) {
+      int randomIndex = Random().nextInt(allQuestions.length);
+      if (!indexes.contains(randomIndex)) {
+        indexes.add(randomIndex);
+        randomQuestions.add(allQuestions[randomIndex]);
+      }
+    }
+
+    return randomQuestions;
+  }
 
   void nextQuestion(int questionLength) {
-    int randomIndex = Random().nextInt(questionLength);
     if (index == questionLength - 1) {
       showDialog(
         context: context,
@@ -37,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     } else {
       setState(() {
-        index = randomIndex; // Mettez à jour l'index avec l'index aléatoire
+        index++; // Mettez à jour l'index avec l'index aléatoire
         isPressed = false;
         isAlreadySelected = false;
       });
@@ -70,6 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Question> randomQuestions = _getRandomQuestions(questions, 10);    
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -115,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: GestureDetector(
-        onTap: () => nextQuestion(questions.length),
+        onTap: () => nextQuestion(10),
         child: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           child: NextButton(),

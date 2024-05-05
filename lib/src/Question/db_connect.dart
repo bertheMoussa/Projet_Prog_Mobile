@@ -271,8 +271,6 @@ List<Question> questions = [
   ),
 ];
 
-
-
 /*class DBconnect {
   // let's first create  a function to add a question to our database.
 // declare the name of the table you want to create and add .json as suffix

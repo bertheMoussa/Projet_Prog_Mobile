@@ -3,11 +3,10 @@ import 'package:projet_dev_mobile/src/constant.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget(
-      {Key? key,
+      {super.key,
       required this.question,
       required this.indexAction,
-      required this.totalQuestions})
-      : super(key: key);
+      required this.totalQuestions});
   // here we need the question title and the total number of questions, and also the index
 
   final String question;
@@ -18,7 +17,7 @@ class QuestionWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.centerLeft,
       child: Text(
-        'Question ${indexAction + 1}/$totalQuestions: $question',
+        'Question: $question',
         style: const TextStyle(
           fontSize: 24.0,
           color: neutral,

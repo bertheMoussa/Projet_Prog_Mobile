@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projet_dev_mobile/src/constant.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({Key? key}) : super(key: key);
+  const NextButton({super.key});
 
   @override
   Widget build(BuildContext context) {

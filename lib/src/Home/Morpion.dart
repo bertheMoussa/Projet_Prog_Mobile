@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:projet_dev_mobile/src/Home/Player.dart';
 import 'package:projet_dev_mobile/src/Home/utils.dart';
 
 class TicTacToeDisplay extends StatelessWidget {
+  const TicTacToeDisplay({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,20 +13,22 @@ class TicTacToeDisplay extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: TicTacToePage(),
+      home: const TicTacToePage(),
     );
   }
 }
 
 class TicTacToePage extends StatefulWidget {
+  const TicTacToePage({super.key});
+
   @override
   _TicTacToePageState createState() => _TicTacToePageState();
 }
 
 class _TicTacToePageState extends State<TicTacToePage> {
-  static final String title = 'Tic Tac Toe';
-  static final countMatrix = 3;
-  static final double size = 92;
+  static const String title = 'Tic Tac Toe';
+  static const countMatrix = 3;
+  static const double size = 92;
 
   String lastMove = Player.none;
   late List<List<String>> matrix;
@@ -50,7 +53,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: getBackgroundColor(),
         appBar: AppBar(
-          title: Text(title),
+          title: const Text(title),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -85,13 +88,13 @@ class _TicTacToePageState extends State<TicTacToePage> {
     final color = getFieldColor(value);
 
     return Container(
-      margin: EdgeInsets.all(4),
+      margin: const EdgeInsets.all(4),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: Size(size, size),
+          minimumSize: const Size(size, size),
           backgroundColor: color,
         ),
-        child: Text(value, style: TextStyle(fontSize: 32)),
+        child: Text(value, style: const TextStyle(fontSize: 32)),
         onPressed: () => selectField(value, x, y),
       ),
     );
@@ -121,7 +124,7 @@ class _TicTacToePageState extends State<TicTacToePage> {
   bool isWinner(int x, int y) {
     var col = 0, row = 0, diag = 0, rdiag = 0;
     final player = matrix[x][y];
-    final n = countMatrix;
+    const n = countMatrix;
 
     for (int i = 0; i < n; i++) {
       if (matrix[x][i] == player) col++;
@@ -138,14 +141,14 @@ class _TicTacToePageState extends State<TicTacToePage> {
         barrierDismissible: false,
         builder: (context) => AlertDialog(
           title: Text(title),
-          content: Text('Press to Restart the Game'),
+          content: const Text('Press to Restart the Game'),
           actions: [
             ElevatedButton(
               onPressed: () {
                 setEmptyFields();
                 Navigator.of(context).pop();
               },
-              child: Text('Restart'),
+              child: const Text('Restart'),
             )
           ],
         ),

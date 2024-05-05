@@ -1,9 +1,6 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:filesystem_picker/filesystem_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_p2p_connection/flutter_p2p_connection.dart';
 import 'package:go_router/go_router.dart';
 

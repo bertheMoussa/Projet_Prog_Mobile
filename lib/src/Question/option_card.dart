@@ -3,10 +3,10 @@ import 'package:projet_dev_mobile/src/constant.dart';
 
 class OptionCard extends StatelessWidget {
   const OptionCard({
-    Key? key,
+    super.key,
     required this.option,
     required this.color,
-  }) : super(key: key);
+  });
   final String option;
   final Color color;
   @override
