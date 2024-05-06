@@ -48,8 +48,8 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
   Color targetColor = Colors.white;
   int score = 0;
   int startingPoints = 10;
-  int maxColors = 35;
-  int timerDuration = 5;
+  int maxColors = 28;
+  int timerDuration = 30;
   Timer? _timer;
 
   @override
@@ -76,8 +76,8 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
   void startGame() {
     setState(() {
       score = 0;
-      startingPoints = 10;
-      timerDuration = 5;
+      startingPoints = 5;
+      timerDuration = 30;
       displayedColors = [];
     });
     _timer?.cancel();
@@ -114,6 +114,13 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
                 title: Text("Game Over"),
                 content: Text("Your score: $score"),
                 actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pop(); // Go back to previous page
+                    },
+                    child: Text("Back to Previous Page"),
+                  ),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();

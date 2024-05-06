@@ -41,9 +41,9 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
   List<Color> displayedColors = [];
   Color targetColor = Colors.white;
   int score = 0;
-  int startingPoints = 10;
-  int maxColors = 35;
-  int timerDuration = 5;
+  int startingPoints = 5;
+  int maxColors = 21;
+  int timerDuration = 30;
   Timer? _timer;
 
   @override
@@ -61,8 +61,8 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
   void startGame() {
     setState(() {
       score = 0;
-      startingPoints = 10;
-      timerDuration = 5;
+      startingPoints = 5;
+      timerDuration = 30;
       displayedColors = [];
     });
     _timer?.cancel();
@@ -106,6 +106,13 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
                     },
                     child: Text("Play Again"),
                   ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pop(); // Go back to previous page
+                    },
+                    child: Text("Back to Previous Page"),
+                  ),
                 ],
               );
             },
@@ -136,6 +143,13 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
                         startGame();
                       },
                       child: Text("Play Again"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop(); // Go back to previous page
+                      },
+                      child: Text("Back to Previous Page"),
                     ),
                   ],
                 );
@@ -194,7 +208,7 @@ class _ColorTappingGameState extends State<ColorTappingGame> {
             ),
             SizedBox(height: 20),
             Text(
-              'Starting Points: $startingPoints',
+              'Lives: $startingPoints',
               style: TextStyle(fontSize: 20),
             ),
             SizedBox(height: 20),

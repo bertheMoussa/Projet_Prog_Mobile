@@ -2,41 +2,32 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:all_bluetooth/all_bluetooth.dart';
 
-void main() {
-  runApp(Math());
-}
+class Math2 extends StatefulWidget {
+  final String deviceName;
 
-class Math extends StatelessWidget {
+  Math2(this.deviceName);
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Math Quiz',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _Math2State createState() => _Math2State();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _Math2State extends State<Math2> {
+  late String _deviceName;
   int _currentQuestion = 0;
   int _score = 0;
   int _lives = 5;
-  TextEditingController _answerController = TextEditingController();
   late Timer _timer;
   int _secondsRemaining = 30;
   late Map<String, dynamic> _questionData;
+  TextEditingController _answerController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    _deviceName = widget.deviceName;
+    _listenForMessages();
     _generateNewQuestion();
     _startTimer();
   }
@@ -84,17 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       setState(() {
         _lives--;
-        if (_lives == 0) {
-          _timer.cancel();
-          _endGame();
-          return;
-        }
       });
     }
     _nextQuestion();
   }
 
-  void _endGame() {
+  Future<void> _endGame() async {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -107,13 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.of(context).pop();
                 _resetGame();
-              },
-            ),
-            TextButton(
-              child: Text("Go Back"),
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
               },
             ),
           ],
@@ -166,6 +145,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return {'question': 'What is $num1 $operationText $num2?', 'answer': correctAnswer};
   }
 
+  void _listenForMessages() {
+    AllBluetooth().listenForData.listen((message) {
+      if (message == 'START_GAME') {
+        _startTimer();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,6 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('Connected to: $_deviceName'),
+            SizedBox(height: 20),
             Text('Time left: $_secondsRemaining seconds'),
             SizedBox(height: 20),
             Text('Lives: $_lives'),

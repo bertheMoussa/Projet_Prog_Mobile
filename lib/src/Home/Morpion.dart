@@ -145,6 +145,13 @@ class _TicTacToePageState extends State<TicTacToePage> {
           actions: [
             ElevatedButton(
               onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Go back to previous page
+              },
+              child: const Text('Back to Previous Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 setEmptyFields();
                 Navigator.of(context).pop();
               },
