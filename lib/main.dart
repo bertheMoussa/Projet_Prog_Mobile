@@ -6,7 +6,6 @@ import 'package:projet_dev_mobile/src/1_Joueur/Quizz/Game5/game.dart';
 import 'package:projet_dev_mobile/src/1_Joueur/Quizz/Game6/Question_screen.dart';
 import 'package:projet_dev_mobile/src/1_Joueur/Sensor/Game4/game.dart';
 import 'package:projet_dev_mobile/src/multiJoueurs/Bluetooth/BluetoothDiscovery.dart';
-import 'package:projet_dev_mobile/src/GameSelection2.dart';
 import 'package:projet_dev_mobile/src/Home/Morpion.dart';
 import 'package:projet_dev_mobile/src/1_Joueur/Movement/Game1/game.dart';
 import 'package:projet_dev_mobile/src/multiJoueurs/Bluetooth/BluetoothSelectionScreen.dart';
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mysterius',
+      title: 'Bluetooth App',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple.shade900),
@@ -48,7 +47,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const AnotherScreen()),
+                  MaterialPageRoute(builder: (context) => MoreOptionsScreen()),
                 );
               },
               child: const Text('1 Player'),
@@ -69,7 +68,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MoreOptionsScreen()),
+                  MaterialPageRoute(builder: (context) => AnotherScreen()),
                 );
               },
               child: const Text('All Games'),
@@ -124,7 +123,7 @@ class AnotherScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) =>  AirHockey()), 
                 );
               },
-              child: const Text('Angle Tilt'),
+              child: const Text('Air Hockey'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(

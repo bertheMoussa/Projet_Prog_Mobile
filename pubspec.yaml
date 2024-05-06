@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter:
+    
     sdk: flutter
 
 
@@ -52,6 +53,7 @@ dependencies:
   permission_handler: ^10.4.5
   all_bluetooth: ^0.1.0
   flutter_chat_bubble: ^2.0.2
+  
 
 
 dev_dependencies:
@@ -70,7 +72,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  assets:
+    - assets/game_over.mp3
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
